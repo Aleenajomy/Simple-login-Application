@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE_URL = (process.env.REACT_APP_API_URL || '').replace(/\/$/, '');
+
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -19,7 +21,7 @@ const Login = () => {
         e.preventDefault();
         setError('');
         try {
-            const response = await axios.post('https://simple-login-application.railway.internal/login', { username, password });
+            const response = await axios.post(`${API_BASE_URL}/login`, { username, password });
             if (response.status === 200) {
                 localStorage.setItem('username', username);
                 navigate('/welcome');

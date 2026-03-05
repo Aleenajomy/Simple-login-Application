@@ -70,6 +70,26 @@ Authentication/
 
    The app will open in your browser at `http://localhost:3000`
 
+## Deploying On Railway
+
+Use **2 Railway services** from this same repo.
+
+1. Create a `backend` service:
+   - Root directory: `backend`
+   - Build command: `npm install`
+   - Start command: `npm start`
+2. Deploy it and copy its public URL (example: `https://your-backend.up.railway.app`).
+3. Create a `frontend` service:
+   - Root directory: `frontend`
+   - Build command: `npm install && npm run build`
+   - Start command: `npm run start:railway`
+4. In the `frontend` service variables, set:
+   - `REACT_APP_API_URL=https://your-backend.up.railway.app`
+5. Redeploy the frontend service.
+
+Important:
+- Do not use `*.railway.internal` in browser code. That internal domain is only reachable from Railway private networking, not public browsers.
+
 ## Testing the Application
 
 ### Test Credentials

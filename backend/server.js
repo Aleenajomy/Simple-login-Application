@@ -28,6 +28,14 @@ const users = {
     users.admin = await bcrypt.hash('admin', 10);
 })();
 
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Backend is running' });
+});
+
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
+
 app.post('/login', loginLimiter, async (req, res) => {
     const { username, password } = req.body;
     
