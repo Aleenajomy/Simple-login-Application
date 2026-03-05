@@ -19,7 +19,7 @@ const Login = () => {
         e.preventDefault();
         setError('');
         try {
-            const response = await axios.post('http://localhost:5000/login', { username, password });
+            const response = await axios.post('https://simple-login-application.railway.internal/login', { username, password });
             if (response.status === 200) {
                 localStorage.setItem('username', username);
                 navigate('/welcome');
